@@ -16,9 +16,8 @@ header,p{
 
 .display {
   margin: 10px;
-  height: 400px; /* Adjust height as needed */
+ /*  height: 400px; Adjust height as needed */
   width: 800px;
-  overflow-y: scroll;
   border: 1px solid #070101; /* Optional border for styling */
   background-color: rgb(248, 244, 187);
 }
@@ -29,5 +28,12 @@ header,p{
 
 #loginBlock {
   background-color: rgb(98, 189, 231);
+}
+
+#articlesList {
+  height: 200px; /* Adjust height as needed */
+  overflow-y: scroll;
+  overflow: auto;
+  background-color: rgb(248, 244, 187);
 }
 

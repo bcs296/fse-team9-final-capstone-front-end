@@ -4,6 +4,13 @@ export function SavedQueries(params) {
     params.onQuerySelect(savedQuery);
   }
 
+  function handleReset() {
+    const confirmed = window.confirm("Are you sure you want to erase the list?");
+    if (confirmed && params.onReset) {
+      params.onReset();
+    }
+  }
+
   function getQueries() {
     return params.savedQueries.map((item, idx) => {
       let trimTitle = item.queryName.substring(0, 30);
@@ -17,6 +24,13 @@ export function SavedQueries(params) {
 
   return (
       <div>
+        <br/>
+        {params.currentUser && (
+          <>
+            <button onClick={handleReset}>Reset</button>
+            <br/>
+          </>
+        )}
         <ul >{
           (params.savedQueries && params.savedQueries.length > 0)
           ? getQueries()

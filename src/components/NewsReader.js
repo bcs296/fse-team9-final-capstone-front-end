@@ -84,6 +84,25 @@ export function NewsReader() {
     setQueryFormObject(selectedQuery);
     setQuery(selectedQuery);
   }
+
+  async function onResetQueries() {
+    try {
+      const emptyQueries = [];
+      const response = await fetch(urlQueries, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(emptyQueries),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      setSavedQueries(emptyQueries);
+      console.log("All saved queries have been cleared");
+    } catch (error) {
+      console.error('Error clearing saved queries:', error);
+    }
+  }
+
   function currentUserMatches(user) {
     if (currentUser) {
       if (currentUser.user) {
@@ -163,11 +182,13 @@ export function NewsReader() {
             <span className='title'>Saved Queries</span>
             <SavedQueries savedQueries={savedQueries}
               selectedQueryName={query.queryName}
-              onQuerySelect={onSavedQuerySelect} />
+              onQuerySelect={onSavedQuerySelect}
+              onReset={onResetQueries}
+              currentUser={currentUser} />
           </div>
           <div className="box">
             <span className='title'>Articles List</span>
-            <Articles query={query} data={data} />
+            <Articles query={query} data={data} onRefresh={getNews} />
           </div>
         </section>
       </div>

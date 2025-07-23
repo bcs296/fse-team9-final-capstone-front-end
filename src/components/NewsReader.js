@@ -1,7 +1,7 @@
 import { QueryForm } from "./QueryForm";
 import { Articles } from "./Articles";
 import { useState, useEffect } from "react";
-import { exampleQuery, exampleData } from "./data";
+import { exampleQuery, exampleData, defaultQueries } from "./data";
 import { SavedQueries } from "./SavedQueries";
 import { LoginForm } from "./LoginForm";
 
@@ -192,17 +192,13 @@ export function NewsReader() {
           </div>
           <div className="box">
             <span className="title">Saved Queries</span>
-            {currentUser && (
-              <>
-                <SavedQueries
-                  savedQueries={savedQueries}
-                  selectedQueryName={query.queryName}
-                  onQuerySelect={onSavedQuerySelect}
-                  onReset={onResetQueries}
-                  currentUser={currentUser}
-                />
-              </>
-            )}
+            <SavedQueries 
+              savedQueries={currentUser ? savedQueries : defaultQueries}
+              selectedQueryName={query.queryName}
+              onQuerySelect={onSavedQuerySelect}
+              onReset={currentUser ? onResetQueries : null}
+              currentUser={currentUser}
+            />
           </div>
           <div className="box">
             <span className="title">Articles List</span>

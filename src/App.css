@@ -17,7 +17,6 @@ header,p{
 .display {
   margin: 10px;
  /*  height: 400px; Adjust height as needed */
-  width: 800px;
   border: 1px solid #070101; /* Optional border for styling */
   background-color: rgb(248, 244, 187);
 }

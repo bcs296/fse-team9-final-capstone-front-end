@@ -32,6 +32,8 @@ code {
 .parent{
   display:flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .box{
@@ -39,6 +41,7 @@ code {
   flex:1;
   padding: 5px;
   max-width: 300px;
+  min-width: 250px;
   font-size: small;
 }
 
@@ -71,4 +74,156 @@ code {
 }
 .moreVisible{
   display:block;
+}
+
+/* Responsive Design */
+/* Mobile devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .parent {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .box {
+    max-width: 100%;
+    min-width: unset;
+    margin-bottom: 10px;
+    font-size: medium;
+  }
+  
+  header p {
+    font-size: medium;
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  ol {
+    padding-left: 15px;
+  }
+  
+  .title {
+    font-size: medium;
+    padding: 8px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    font-size: medium;
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .parent {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .box {
+    max-width: 100%;
+    min-width: unset;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    margin: 3px 0;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .parent {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .box {
+    flex: 1 1 45%;
+    max-width: 45%;
+    min-width: 300px;
+  }
+  
+  /* Stack articles list below on tablets */
+  .box:last-child {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .parent {
+    flex-direction: row;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .box {
+    max-width: 350px;
+    min-width: 280px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .parent {
+    max-width: 1400px;
+  }
+  
+  .box {
+    max-width: 400px;
+    min-width: 320px;
+  }
+}
+
+/* Responsive utilities */
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Responsive text and images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch-friendly buttons and links */
+@media (max-width: 767.98px) {
+  a, button, li {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  li:hover, li:focus {
+    background-color: #f5f5f5;
+  }
+}
+
+/* Responsive forms */
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  input, textarea, select {
+    width: auto;
+    min-width: 200px;
+  }
 }

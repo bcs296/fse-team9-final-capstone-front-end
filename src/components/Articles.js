@@ -20,8 +20,8 @@ export function Articles(params) {
           <div id="displayQuery">
             <ul>
               <li>Query Name: {queryName}</li>
-              <li>Article: {articleCount}</li>
-              <li>Query: {query}</li>
+              <li>Articles: {articleCount}</li>
+              <li>Query text: {query}</li>
               <li>Language: {language}</li>
             </ul>
           </div>

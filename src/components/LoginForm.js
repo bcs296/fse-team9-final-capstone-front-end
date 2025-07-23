@@ -7,21 +7,24 @@ export function LoginForm(params) {
     };
 
     return (
-        <div className="box" style={{ maxWidth: "unset" }}>            
+        <div className="box" style={{ maxWidth: "unset" }}> 
+            <br />           
             <div className={(params.currentUser) ? "hidden" : "visible"}>
                 <div>
                     <label htmlFor="user">User: </label>
                     <input type="text" size={10} id="user" name="user" value={params.credentials.user} onChange={handleChange} />
                 </div>
-
+                <br />
                 <div>
                     <label htmlFor="password">Password: </label>
                     <input type="text" size={10} id="password" name="password" value={params.credentials.password} onChange={handleChange} />
                 </div>
+                <br />
             </div>
             <button onClick={params.login}>
                 {(params.currentUser) ? "Logout" : "Login"}
             </button>
+            <br />
             &nbsp;User: <span style={{ fontWeight: "bold" }} >{(params.currentUser) ? params.currentUser.user : "not logged in"}</span>
         </div>
     );

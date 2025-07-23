@@ -1,14 +1,13 @@
-
-import { QueryForm } from './QueryForm';
-import { Articles } from './Articles';
-import { useState, useEffect } from 'react';
-import { exampleQuery, exampleData } from './data';
-import { SavedQueries } from './SavedQueries';
-import { LoginForm } from './LoginForm';
+import { QueryForm } from "./QueryForm";
+import { Articles } from "./Articles";
+import { useState, useEffect } from "react";
+import { exampleQuery, exampleData } from "./data";
+import { SavedQueries } from "./SavedQueries";
+import { LoginForm } from "./LoginForm";
 
 export function NewsReader() {
   const [query, setQuery] = useState(exampleQuery); // latest query send to newsapi
-  const [data, setData] = useState(exampleData);   // current data returned from newsapi
+  const [data, setData] = useState(exampleData); // current data returned from newsapi
   const [currentUser, setCurrentUser] = useState(null);
   const [credentials, setCredentials] = useState({ user: "", password: "" });
   const [queryFormObject, setQueryFormObject] = useState({ ...exampleQuery });
@@ -19,11 +18,11 @@ export function NewsReader() {
 
   useEffect(() => {
     getNews(query);
-  }, [query])
+  }, [query]);
 
   useEffect(() => {
     getQueryList();
-  }, [])
+  }, []);
 
   async function getQueryList() {
     try {
@@ -34,7 +33,7 @@ export function NewsReader() {
         setSavedQueries(data);
       }
     } catch (error) {
-      console.error('Error fetching news:', error);
+      console.error("Error fetching news:", error);
     }
   }
 
@@ -46,19 +45,24 @@ export function NewsReader() {
       // login
       try {
         const response = await fetch(urlUsersAuth, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
         });
         if (response.status === 200) {
           setCurrentUser({ ...credentials });
           setCredentials({ user: "", password: "" });
         } else {
-          alert("Error during authentication! " + credentials.user + "/" + credentials.password);
+          alert(
+            "Error during authentication! " +
+              credentials.user +
+              "/" +
+              credentials.password
+          );
           setCurrentUser(null);
         }
       } catch (error) {
-        console.error('Error authenticating user:', error);
+        console.error("Error authenticating user:", error);
         setCurrentUser(null);
       }
     }
@@ -67,8 +71,8 @@ export function NewsReader() {
   async function saveQueryList(savedQueries) {
     try {
       const response = await fetch(urlQueries, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(savedQueries),
       });
       if (!response.ok) {
@@ -76,7 +80,7 @@ export function NewsReader() {
       }
       console.log("savedQueries array has been persisted:");
     } catch (error) {
-      console.error('Error fetching news:', error);
+      console.error("Error fetching news:", error);
     }
   }
 
@@ -89,8 +93,8 @@ export function NewsReader() {
     try {
       const emptyQueries = [];
       const response = await fetch(urlQueries, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(emptyQueries),
       });
       if (!response.ok) {
@@ -99,7 +103,7 @@ export function NewsReader() {
       setSavedQueries(emptyQueries);
       console.log("All saved queries have been cleared");
     } catch (error) {
-      console.error('Error clearing saved queries:', error);
+      console.error("Error clearing saved queries:", error);
     }
   }
 
@@ -116,11 +120,13 @@ export function NewsReader() {
 
   function onFormSubmit(queryObject) {
     if (currentUser === null) {
-      alert("Log in if you want to create new queries!")
+      alert("Log in if you want to create new queries!");
       return;
     }
     if (savedQueries.length >= 3 && currentUserMatches("guest")) {
-      alert("guest users cannot submit new queries once saved query count is 3 or greater!")
+      alert(
+        "guest users cannot submit new queries once saved query count is 3 or greater!"
+      );
       return;
     }
 
@@ -141,8 +147,8 @@ export function NewsReader() {
     if (queryObject.q) {
       try {
         const response = await fetch(urlNews, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(queryObject),
         });
 
@@ -152,7 +158,7 @@ export function NewsReader() {
         const data = await response.json();
         setData(data);
       } catch (error) {
-        console.error('Error fetching news:', error);
+        console.error("Error fetching news:", error);
       }
     } else {
       setData({});
@@ -162,36 +168,48 @@ export function NewsReader() {
   return (
     <div>
       <div id="loginBlock">
-        <LoginForm login={login}
+        <LoginForm
+          login={login}
           credentials={credentials}
           currentUser={currentUser}
           setCredentials={setCredentials}
         />
       </div>
-      <div >
-        <section className="parent" >
+      <div>
+        <section className="parent">
           <div className="box">
-            <span className='title'>Query Form</span>
-            <QueryForm
-              currentUser={currentUser}
-              setFormObject={setQueryFormObject}
-              formObject={queryFormObject}
-              submitToParent={onFormSubmit} />
+            <span className="title">Query Form</span>
+            {currentUser && (
+              <>
+                <QueryForm
+                  currentUser={currentUser}
+                  setFormObject={setQueryFormObject}
+                  formObject={queryFormObject}
+                  submitToParent={onFormSubmit}
+                />
+              </>
+            )}
           </div>
           <div className="box">
-            <span className='title'>Saved Queries</span>
-            <SavedQueries savedQueries={savedQueries}
-              selectedQueryName={query.queryName}
-              onQuerySelect={onSavedQuerySelect}
-              onReset={onResetQueries}
-              currentUser={currentUser} />
+            <span className="title">Saved Queries</span>
+            {currentUser && (
+              <>
+                <SavedQueries
+                  savedQueries={savedQueries}
+                  selectedQueryName={query.queryName}
+                  onQuerySelect={onSavedQuerySelect}
+                  onReset={onResetQueries}
+                  currentUser={currentUser}
+                />
+              </>
+            )}
           </div>
           <div className="box">
-            <span className='title'>Articles List</span>
+            <span className="title">Articles List</span>
             <Articles query={query} data={data} onRefresh={getNews} />
           </div>
         </section>
       </div>
     </div>
-  )
+  );
 }

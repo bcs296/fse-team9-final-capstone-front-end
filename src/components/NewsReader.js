@@ -123,11 +123,13 @@ export function NewsReader() {
 
   return (
     <div>
-      <LoginForm login={login}
+      <div id="loginBlock">
+        <LoginForm login={login}
           credentials={credentials}
           currentUser={currentUser}
           setCredentials={setCredentials} 
-      />
+        />
+      </div>
       <div >
         <section className="parent" >
           <div className="box">

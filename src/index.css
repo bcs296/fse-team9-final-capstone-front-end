@@ -52,6 +52,7 @@ code {
   display: block;
   background-color: #888;
   color: white;
+  font-family: 'Courier New', 'Segoe UI', sans-serif;
 }
 
 .selected{

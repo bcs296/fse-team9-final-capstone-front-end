@@ -1,4 +1,4 @@
-import { NewsReader } from './NewsReader';
+import { NewsReader } from './components/NewsReader';
 import './App.css';
 
 function App() {
@@ -8,7 +8,9 @@ function App() {
       <header>
         <p>News Reader App</p>
       </header>
-      <NewsReader />
+      <div class="display">
+        <NewsReader />
+      </div>
     </div>
   );
 }

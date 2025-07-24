@@ -39,7 +39,7 @@ header,p{
 }
 
 .queryField {
-  margin: 2px;
+  margin: 5px;
 }
 
 .queryForm {
@@ -56,12 +56,11 @@ header,p{
 }
 
 #articlesList {
-  height: 200px; /* Adjust height as needed */
+  max-height: 400px; /* Adjust height as needed */
   overflow-y: scroll;
   overflow: auto;
   background-color: #f2fcfc;
   font-size: medium;
-  margin-bottom: 2px;
 }
 
 #submitButton {

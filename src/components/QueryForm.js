@@ -41,7 +41,7 @@ export function QueryForm(params) {
                     <label htmlFor="q">Query Text: </label><br />
                     <input type="text" size={10} id="q" name="q" value={params.formObject.q} onChange={handleChange} />
                 </div>
-                <div className={(currentUserIsAdmin()) ? "visible" : "hidden"}>
+                <div className={(currentUserIsAdmin()) ? "visible queryField" : "hidden queryField"}>
                     {/* Extra fields */}
                     <div>
                         <label htmlFor="language">Language: </label><br />

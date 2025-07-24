@@ -47,6 +47,9 @@ header,p{
   border: 1px solid #070101; /* Optional border for styling */
   background-color: #f2fcfc;
 }
+.articleItems {
+  padding-bottom: 10px;
+}
 
 #loginBlock {
   background-color: #ffd000;
@@ -57,6 +60,8 @@ header,p{
   overflow-y: scroll;
   overflow: auto;
   background-color: #f2fcfc;
+  font-size: medium;
+  margin-bottom: 2px;
 }
 
 #submitButton {

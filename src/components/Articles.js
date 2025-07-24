@@ -38,7 +38,7 @@ export function Articles(params) {
                 let trimTitle = item.title.substring(0, 60);
                 //return (<li key={idx}>{trimTitle}<a href={item.url} target="_blank" rel="noreferrer" >&nbsp;Link</a></li>);
                 return (
-                  <li key={idx}>
+                  <li className="articleItems" key={idx}>
                     <a href={item.url} target="_blank" rel="noreferrer">
                       {trimTitle}
                     </a>

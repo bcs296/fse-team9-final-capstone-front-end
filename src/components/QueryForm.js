@@ -34,18 +34,17 @@ export function QueryForm(params) {
         <div className="queryForm">
             <form>
                 <div className="queryField">
-                    <label htmlFor="queryName">Query Name: </label>
+                    <label htmlFor="queryName">Query Name: </label><br />
                     <input type="text" size={10} id="queryName" name="queryName" value={params.formObject.queryName} onChange={handleChange} />
                 </div>
                 <div className="queryField">
-                    <label htmlFor="q">Query Text: </label>
+                    <label htmlFor="q">Query Text: </label><br />
                     <input type="text" size={10} id="q" name="q" value={params.formObject.q} onChange={handleChange} />
                 </div>
-                <div className={(currentUserIsAdmin()) ? "visible" : "hidden"}
-                    style={{ border: "solid black 1px" }}>
+                <div className={(currentUserIsAdmin()) ? "visible" : "hidden"}>
                     {/* Extra fields */}
                     <div>
-                        <label htmlFor="language">Language: </label>
+                        <label htmlFor="language">Language: </label><br />
                         <select id="language" name="language" value={params.formObject.language} onChange={handleChange}>
                             <option value="">All</option>
                             <option value="en">English</option>
@@ -58,7 +57,7 @@ export function QueryForm(params) {
                     </div>
 
                     <div>
-                        <label htmlFor="pageSize">Page Size: </label>
+                        <label htmlFor="pageSize">Page Size: </label><br />
                         <input
                             type="number"
                             id="pageSize"

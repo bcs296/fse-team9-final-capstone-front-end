@@ -11,14 +11,16 @@ export function LoginForm(params) {
             <div className={(params.currentUser) ? "hidden" : "visible"}>
                 <div>
                     <label htmlFor="user">User: </label>
+                    <br />
                     <input type="text" size={10} id="user" name="user" value={params.credentials.user} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="password">Password: </label>
+                    <br />
                     <input type="text" size={10} id="password" name="password" value={params.credentials.password} onChange={handleChange} />
                 </div>
             </div>
-            <button onClick={params.login}>
+            <button id="loginButton" onClick={params.login}>
                 {(params.currentUser) ? "Logout" : "Login"}
             </button>
             &nbsp;User: <span style={{ fontWeight: "bold" }} >{(params.currentUser) ? params.currentUser.user : "not logged in"}</span>

@@ -67,7 +67,7 @@ code {
   display: block;
   background-color: #ffd000;
   color: black;
-  font-family: 'Courier New', 'Segoe UI', sans-serif;
+  font-size: large;
 }
 
 .selected{

@@ -29,13 +29,18 @@ header,p{
 
 .display {
   margin: 10px;
- /*  height: 400px; Adjust height as needed */
   border: 1px solid #070101; /* Optional border for styling */
-  background-color: #f2fcfc;
+  /*background-color: #f2fcfc; */
 }
 
 .queryField {
   margin: 2px;
+}
+
+.queryForm {
+  margin: 10px;
+  border: 1px solid #070101; /* Optional border for styling */
+  background-color: #f2fcfc;
 }
 
 #loginBlock {

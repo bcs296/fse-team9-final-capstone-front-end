@@ -167,7 +167,7 @@ export function NewsReader() {
 
   return (
     <div>
-      <div id="loginBlock">
+      <div className="loginBlock">
         <LoginForm
           login={login}
           credentials={credentials}

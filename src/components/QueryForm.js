@@ -31,13 +31,13 @@ export function QueryForm(params) {
     }
 
     return (
-        <div>
+        <div className="queryForm">
             <form>
-                <div class="queryField">
+                <div className="queryField">
                     <label htmlFor="queryName">Query Name: </label>
                     <input type="text" size={10} id="queryName" name="queryName" value={params.formObject.queryName} onChange={handleChange} />
                 </div>
-                <div class="queryField">
+                <div className="queryField">
                     <label htmlFor="q">Query Text: </label>
                     <input type="text" size={10} id="q" name="q" value={params.formObject.q} onChange={handleChange} />
                 </div>

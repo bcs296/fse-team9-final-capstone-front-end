@@ -17,7 +17,16 @@ export function LoginForm(params) {
                 <div>
                     <label htmlFor="password">Password: </label>
                     <br />
-                    <input type="text" size={10} id="password" name="password" value={params.credentials.password} onChange={handleChange} />
+                    <input 
+                        type="password" 
+                        size={10} 
+                        id="password" 
+                        name="password" 
+                        value={params.credentials.password} 
+                        onChange={handleChange}
+                        autoComplete="current-password"
+                        style={{ fontFamily: 'monospace' }}
+                    />
                 </div>
             </div>
             <button id="loginButton" onClick={params.login}>
